@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # build.sh -- builds JAR and XPI files for mozilla extensions
 #   by Nickolay Ponomarev <asqueella@gmail.com>
 #   (original version based on Nathan Yergler's build script)
@@ -80,7 +80,7 @@ if [ -z "$CLEAN" ]; then
 fi
 # --- version detected
 
-mkdir --parents  $TMP_DIR/chrome
+gmkdir --parents  $TMP_DIR/chrome
 
 # generate the JAR file, excluding CVS, SVN, and temporary files
 JAR_FILE=$TMP_DIR/chrome/$APP_NAME.jar
@@ -91,20 +91,20 @@ done
 
 #zip -0 -r $JAR_FILE -@ < files
 # The following statement should be used instead if you don't wish to use the JAR file
-cp  --parents `cat files` $TMP_DIR/chrome
+gcp  --parents `cat files` $TMP_DIR/chrome
 
 # prepare components and defaults
 echo "Copying various files to $TMP_DIR folder..."
 for DIR in $ROOT_DIRS; do
-  mkdir $TMP_DIR/$DIR
+  gmkdir $TMP_DIR/$DIR
   FILES="`find $DIR \( -path '*CVS*' -o -path '*.svn*' \) -prune -o -type f -print | grep -v \~`"
   echo $FILES >> files
-  cp  --parents $FILES $TMP_DIR
+  gcp  --parents $FILES $TMP_DIR
 done
 
 # Copy other files to the root of future XPI.
 for ROOT_FILE in $ROOT_FILES install.rdf chrome.manifest; do
-  cp  $ROOT_FILE $TMP_DIR
+  gcp  $ROOT_FILE $TMP_DIR
   if [ -f $ROOT_FILE ]; then
     echo $ROOT_FILE >> files
   fi
@@ -122,8 +122,8 @@ if [ -f "chrome.manifest" ]; then
   #s/^(skin|locale)(\s+\S*\s+\S*\s+)(.*\/)$/\1\2jar:chrome\/$APP_NAME\.jar!\/\3/
   #
   # Then try this! (Same, but with characters escaped for bash :)
-  sed -i -r s/^\(content\\s+\\S*\\s+\)\(\\S*\\/\)$/\\1chrome\\/\\2/ chrome.manifest
-  sed -i -r s/^\(skin\|locale\)\(\\s+\\S*\\s+\\S*\\s+\)\(.*\\/\)$/\\1\\2chrome\\/\\3/ chrome.manifest
+  gsed -i -r s/^\(content\\s+\\S*\\s+\)\(\\S*\\/\)$/\\1chrome\\/\\2/ chrome.manifest
+  gsed -i -r s/^\(skin\|locale\)\(\\s+\\S*\\s+\\S*\\s+\)\(.*\\/\)$/\\1\\2chrome\\/\\3/ chrome.manifest
 
   # (it simply adds jar:chrome/whatever.jar!/ at appropriate positions of chrome.manifest)
 fi
