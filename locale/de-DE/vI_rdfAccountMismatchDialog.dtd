@@ -5,9 +5,14 @@
 <!ENTITY vident.virtualIdentityExtension_rdfAccountMismatchDialog_identity.caption "ordne zusammengehörige Identitäten">
 <!ENTITY vident.virtualIdentityExtension_rdfAccountMismatchDialog_smtp.desc "Einige der vorher gespeicherten SMTP-Server passen nicht zu den aktuellen SMTP-Servern. Bitte entscheide, ob die folgenden SMTP-Server entfernt oder anderen SMTP-Servern zugeordnet werden sollen:">
 <!ENTITY vident.virtualIdentityExtension_rdfAccountMismatchDialog_smtp.caption "ordne zusammengehörige SMTP-Server">
+<!ENTITY vident.virtualIdentityExtension_rdfAccountMismatchDialog_smtpid.desc "Die neue Version von Virtual Identity wählt den SMTP-Server anhand der Basis-Identität. Dies kollidiert mit einigen der bereits gespeicherten Sende-Identitäten, wo der gespeicherte SMTP-Server nicht mit dem der gespeicherten Basis-Identität überein stimmt. Bitte wähle, welche Basis-Identität (und damit welcher SMTP-Server) genutzt werden soll:">
+<!ENTITY vident.virtualIdentityExtension_rdfAccountMismatchDialog_smtpid.caption "assign mismatching SMTP-servers:">
 <!ENTITY vident.virtualIdentityExtension_rdfAccountMismatchDialog_identity.old "vorherige Identität (Email / voller Name)">
 <!ENTITY vident.virtualIdentityExtension_rdfAccountMismatchDialog_identity.count "Häufigkeit">
 <!ENTITY vident.virtualIdentityExtension_rdfAccountMismatchDialog_identity.new "neue Identität (Email / voller Name)">
 <!ENTITY vident.virtualIdentityExtension_rdfAccountMismatchDialog_smtp.old "vorheriger SMTP-Server (name / nutzer)">
 <!ENTITY vident.virtualIdentityExtension_rdfAccountMismatchDialog_smtp.count "Häufigkeit">
 <!ENTITY vident.virtualIdentityExtension_rdfAccountMismatchDialog_smtp.new "neuer SMTP-Server (name / nutzer)">
+<!ENTITY vident.virtualIdentityExtension_rdfAccountMismatchDialog_smtpid.old "alter SMTP-Server (Identität / SMTP-Server)">
+<!ENTITY vident.virtualIdentityExtension_rdfAccountMismatchDialog_smtpid.count "Häufigkeit">
+<!ENTITY vident.virtualIdentityExtension_rdfAccountMismatchDialog_smtpid.new "neue Identität (SMTP-Server)">

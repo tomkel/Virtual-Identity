@@ -38,6 +38,8 @@ virtualIdentityExtension.ns(function () {
     Components.utils.import("resource://v_identity/vI_rdfDatasource.js", virtualIdentityExtension);
     Components.utils.import("resource://v_identity/vI_prefs.js", virtualIdentityExtension);
 
+    Components.utils.import("resource://v_identity/strftime/strftime.js");
+    
     //prepares an object for easy comparison against another. for strings, lowercases them
     var prepareForComparison = function (element, field) {
       if (field == "changedCol") {
@@ -123,8 +125,10 @@ virtualIdentityExtension.ns(function () {
           changedDate = "";
         var format = vI.prefroot.getCharPref("extensions.virtualIdentity.storage_timeFormat")
         if (format != "") {
-          if (used) usedDate = new Date(parseFloat(used)).toLocaleFormat(format);
-          if (changed) changedDate = new Date(parseFloat(changed)).toLocaleFormat(format);
+          try { //	you never know what the formatString will be...
+            if (used) usedDate = strftime(format, new Date(parseFloat(used)));
+            if (changed) changedDate = strftime(format, new Date(parseFloat(changed)));
+          } catch (e) {};
         } else {
           if (used) usedDate = new Date(parseFloat(used)).toLocaleString();
           if (changed) changedDate = new Date(parseFloat(changed)).toLocaleString();
@@ -133,8 +137,6 @@ virtualIdentityExtension.ns(function () {
             recipientCol: name,
             indexCol: idData.length + 1 + ".",
             senderCol: localIdentityData.combinedName,
-            smtpCol: localIdentityData.smtp.value,
-            //				smtpKey : localIdentityData.smtp.key,
             idCol: localIdentityData.id.value,
             usedCol: usedDate,
             used: used,
@@ -243,7 +245,7 @@ virtualIdentityExtension.ns(function () {
           .getService(Components.interfaces.nsIStringBundleService)
           .createBundle("chrome://v_identity/locale/vI_rdfDataEditor.properties");
 
-        rdfDataTreeCollection._rdfDatasource = new vI.rdfDatasource(window, "virtualIdentity.rdf");
+        rdfDataTreeCollection._rdfDatasource = new vI.rdfDatasource(window, "virtualIdentity_0.10.rdf");
 
         for (var treeType of rdfDataTreeCollection.treeTypes)
         rdfDataTreeCollection.trees[treeType] = new rdfDataTree(treeType, rdfDataTreeCollection._rdfDatasource);
@@ -253,13 +255,9 @@ virtualIdentityExtension.ns(function () {
         if (rdfDataTreeCollection._rdfDatasource) rdfDataTreeCollection._rdfDatasource.clean();
       },
 
-      get _braille() {
-        var braille = false;
-        try {
-          braille = (vI.prefroot.getCharPref("accessibility.usebrailledisplay") ||
-            vI.prefroot.getCharPref("accessibility.usetexttospeech"));
-        } catch (e) {};
-        return braille;
+      get _texttospeach() {
+        return "true"; // can't get icons drawn in tree - changed behavior of treechildren::-moz-tree-cell
+        //return vI.prefroot.getCharPref("accessibility.usetexttospeech");
       },
 
       // generic custom tree view stuff
@@ -267,7 +265,7 @@ virtualIdentityExtension.ns(function () {
         this.rowCount = table.length;
         this.getCellText = function (row, col) {
           var retValue = table[row][col.id.substr(0, col.id.indexOf("_"))];
-          if (!rdfDataTreeCollection._braille && (retValue == "no" || retValue == "yes"))
+          if (!rdfDataTreeCollection._texttospeach && (retValue == "no" || retValue == "yes"))
             return ""; // image will be used as indicator
           else return retValue;
         };
@@ -303,37 +301,7 @@ virtualIdentityExtension.ns(function () {
           if (treeType != "filter")
             rdfDataTreeCollection.trees[treeType].sort(col.id.substr(0, col.id.indexOf("_")));
         };
-        this.getCellProperties = function (row, col, props) {
-          var returnValue = null;
-          if (!rdfDataTreeCollection._braille) {
-            var aserv = Components.classes["@mozilla.org/atom-service;1"].
-            getService(Components.interfaces.nsIAtomService);
-            if (typeof props == 'undefined') {
-              // Requires Gecko 22
-              switch (table[row][col.id.substr(0, col.id.indexOf("_"))]) {
-              case "yes":
-                returnValue = aserv.getAtom("yes");
-                break;
-              case "no":
-                returnValue = aserv.getAtom("no");
-                break;
-              }
-            } else {
-              // Obsolete since Gecko 22
-              switch (table[row][col.id.substr(0, col.id.indexOf("_"))]) {
-              case "yes":
-                props.AppendElement(aserv.getAtom("yes"));
-                break;
-              case "no":
-                props.AppendElement(aserv.getAtom("no"));
-                break;
-              }
-            }
-          }
-          return returnValue;
-        };
       },
-
 
       __setFilter: function (text) {
         // loop trough all trees
@@ -546,7 +514,7 @@ virtualIdentityExtension.ns(function () {
       newItem: function () {
         var treeType = rdfDataTreeCollection.tabbox.selectedPanel.id;
         var newItemPreset = {
-          identityData: new vI.identityData(window, "", null, null, vI.NO_SMTP_TAG, null, null)
+          identityData: new vI.identityData(window, "", null, null, null, null)
         };
         var retVar = {
           treeType: null

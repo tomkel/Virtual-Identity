@@ -84,39 +84,17 @@
 <!ENTITY vI_prefDialog.composeDialog.caption3 "Přepínače úložiště">
 <!ENTITY vI_prefDialog.composeDialog.autoTimestamp.label "pro nové e-maily automaticky generovat identity s časovým razítkem">
 <!ENTITY vI_prefDialog.composeDialog.autoTimestamp.tooltiptext "Při psaní nového e-mailu, přidá do obvyklé adresy odesilatele časové razítko. Jednoduchý způsob tvorby unikátních identit, ve výchozím stavu vypnuto.">
-<!ENTITY vI_prefDialog.composeDialog.autoTimeFormat.label "Format of Timestamp: Leave empty or use strftime() syntax (&apos;&#37;c&apos;)"> <!-- translate -->
+<!ENTITY vI_prefDialog.composeDialog.autoTimeFormat.label "Format of Timestamp: Leave empty or use strftime() syntax (&apos;&#37;Y&#37;m&#37;d&#37;H&#37;M&#37;S&apos;)"> <!-- translate -->
 <!ENTITY vI_prefDialog.composeDialog.autoTimeString.label "Format of Result: &#37;l localpart, &#37;t timestamp, &#37;d domain. Default &apos;&#37;l&#37;t@&#37;d&apos;"> <!-- translate -->
-<!ENTITY vI_prefDialog.composeDialog.HideSignature.warning.desc "poznámka: pro aktivaci dynamického odstraňování podpisu je potřeba nainstalovat a aktivovat rozšíření 'Signature Switch'. Nyní tato volba není dostupná.">
-<!ENTITY vI_prefDialog.composeDialog.HideSignature.label "při použití virtuální identity odstranit podpis">
-<!ENTITY vI_prefDialog.composeDialog.HideSMimeSignature.label "při použití Virtual Identity vypnout S/MIME podpis">
-<!ENTITY vI_prefDialog.composeDialog.HideOpenPGPSignature.label "při použití Virtual Identity vypnout openPGP podpis">
-<!ENTITY vI_prefDialog.composeDialog.autoReplyToSelf.label "nastavit Virtual Identity jako adresu pro Reply-To">
 <!ENTITY vI_prefDialog.composeDialog.status.label "show Status-Bar infos / menu"> <!-- translate -->
 <!ENTITY vI_prefDialog.composeDialog.status.tooltiptext "show Notifications in Status-Bar, display Status-Bar Menu"> <!-- translate -->
 <!ENTITY vI_prefDialog.composeDialog.SMTP.label "zobrazit nabídku SMTP">
 <!ENTITY vI_prefDialog.composeDialog.SMTP.tooltiptext "zobrazit nabídku pro výběr dostupných SMTP serverů">
-<!ENTITY vI_prefDialog.composeDialog.fcc_show_switch.label "zobrazit přepínač pro zapnutí ukládání odesílaných e-mailů (FCC)">
-<!ENTITY vI_prefDialog.composeDialog.fcc_show_switch.tooltiptext "zobrazí tlačítko pro zapnutí/vypnutí ukládání odesílaných mailů (FCC)">
 <!ENTITY vI_prefDialog.composeDialog.show_switch.label "zaškrtávací políčko pro ukládání identit">
 <!ENTITY vI_prefDialog.composeDialog.show_baseID_switch.label "zaškrtávací políčko pro ukládání základních identit">
 <!ENTITY vI_prefDialog.composeDialog.show_SMTP_switch.label "zaškrtávací políčko pro ukládání SMTP">
 <!ENTITY vI_prefDialog.composeDialog.storage_colorIndication.label "obarvit části identit k uložení">
 
-<!ENTITY vI_prefDialog.sending.Folder.label "Atributy / kopie">
-<!ENTITY vI_prefDialog.sending.Folder.row0.label "Odeslat zprávu">
-<!ENTITY vI_prefDialog.sending.Folder.row1.label "Koncepty">
-<!ENTITY vI_prefDialog.sending.Folder.row2.label "Šablony">
-<!ENTITY vI_prefDialog.sending.warnings.label "Varování">
-
-<!ENTITY vI_prefDialog.sending.Folder.header "Vlastnosti zprávy">
-<!ENTITY vI_prefDialog.sending.Folder.caption "atributy pro zkopírování">
-<!ENTITY vI_prefDialog.sending.Folder.desc "kopírovat následující vlastnosti z předchozí identity:">
-<!ENTITY vI_prefDialog.sending.Folder.Enigmail.label "OpenPGP / Enigmail settings"> <!-- translate -->
-<!ENTITY vI_prefDialog.sending.Folder.SMIME.label "Nastavení S/MIME">
-<!ENTITY vI_prefDialog.sending.Folder.VCard.label "přílohy vCard">
-
-<!ENTITY vI_prefDialog.sending.fccTab.header "Složka odeslané pošty">
-<!ENTITY vI_prefDialog.sending.fccTab.caption "při odeslání zprávy s Virtual Identity">
 <!ENTITY vI_prefDialog.sending.vidAccount.label "Složka používána účtem změněným Virtual Identity">
 <!ENTITY vI_prefDialog.sending.vidDefault.label "Složka používána výchozím účtem">
 
@@ -126,6 +104,7 @@
 <!ENTITY vI_prefDialog.sending.tmplTab.header "Složka šablon">
 <!ENTITY vI_prefDialog.sending.tmplTab.caption "Místo pro uložení šablon">
 
+<!ENTITY vI_prefDialog.sending.warnings.label "Varování">
 <!ENTITY vI_prefDialog.sending.warnings.header "Varování">
 <!ENTITY vI_prefDialog.sending.warnings.caption "před odesláním zprávy">
 <!ENTITY vI_prefDialog.sending.warnings.warnNonvirtual.label "varovat při jakémkoliv použití nevirtuální identity">
@@ -141,7 +120,7 @@
 <!ENTITY vI_prefDialog.storageTab.Tab0.header "Úložiště identit">
 <!ENTITY vI_prefDialog.storageTab.Tab0.caption "Využití úložiště">
 <!ENTITY vI_prefDialog.storageTab.Tab0.caption2 "Storage Editor"> <!-- translate -->
-<!ENTITY vI_prefDialog.storageTab.DateFormat.label "Format of Dates: Leave empty or use strftime() syntax (&apos;&#37;c&apos;)"> <!-- translate -->
+<!ENTITY vI_prefDialog.storageTab.DateFormat.label "Format of Dates: Leave empty or use strftime() syntax (&apos;&#37;F&apos;)"> <!-- translate -->
 <!ENTITY vI_prefDialog.storage.label "uložit (a vyvolat) použité identity">
 <!ENTITY vI_prefDialog.storage.tooltiptext "Spolu s příjemcem vašeho e-mailu může být uložena i použitá identita. Pokud budete psát znovu stejnému příjemci, bude použita stejná virtuální nebo nevirtuální identita">
 <!ENTITY vI_prefDialog.storage.openEditor "upravit uložená data">
@@ -188,9 +167,3 @@
 <!ENTITY vI_prefDialog.notifyDebug.label "zobrazit pole s ladícími informacemi">
 <!ENTITY vI_prefDialog.debugToFile.label "debug to file"> <!-- translate -->
 <!ENTITY vI_prefDialog.debugToFile.choose "choose"> <!-- translate -->
-
-
-<!-- just for TB 1.5. ReplyFollowsParent not available -->
-<!-- fields will be hidden, dont have to be translated -->
-<!ENTITY fccReplyFollowsParent.label "">
-<!ENTITY fccReplyFollowsParent.accesskey "">

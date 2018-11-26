@@ -26,8 +26,6 @@
 <!DOCTYPE page [
 <!ENTITY % amCopiesDTD SYSTEM "chrome://messenger/locale/am-copies.dtd">
 %amCopiesDTD;
-<!ENTITY % versionDTD SYSTEM "chrome://v_identity/content/_version.dtd">
-%versionDTD;
 <!ENTITY % vIprefDialogDTD SYSTEM "chrome://v_identity/locale/vI_prefDialog.dtd">
 %vIprefDialogDTD;
 <!ENTITY % vIstorageExtrasDTD SYSTEM "chrome://v_identity/locale/vI_storageExtras.dtd">
@@ -39,30 +37,23 @@
 <?xml-stylesheet href="chrome://communicator/skin/" type="text/css"?>
 <?xml-stylesheet href="chrome://messenger/skin/prefPanels.css" type="text/css"?>
 <?xml-stylesheet href="chrome://messenger/skin/accountManage.css" type="text/css"?>
-<?xml-stylesheet href="chrome://mozapps/skin/extensions/extensions.css"?>
 <?xml-stylesheet href="chrome://v_identity/skin/v_identity.css" type="text/css"?>
 <?xml-stylesheet href="chrome://messenger/skin/messageHeader.css"?>
 
+<dialog id="vI_prefDialog"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        onload="virtualIdentityExtension.prefDialog.init();"
+        buttons="accept,cancel,help"
+        ondialogaccept="virtualIdentityExtension.prefDialog.savePrefs();"
+        ondialoghelp="virtualIdentityExtension.prefDialog.toggleHelp();"
+        buttonlabelhelp="&vI_prefDialog.dlgHelpButton.label;"
+        persist="screenX screenY"
+        title="&vI_prefDialog.dlgTitle.label;" >
 
-<overlay xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
-	xmlns:xhtml="http://www.w3.org/1999/xhtml" >
+<script type="application/x-javascript"
+            src="chrome://v_identity/content/prefDialog/vI_prefDialog.js" />
 
-<dialog id="vI_prefDialog">
-
-<broadcaster id="VIdent_broadcaster_doFcc"/>
-
-<textbox hidden="true" id="VIdent_identity.fccFolder"
-                prefstring="fccFolder"/>
-<textbox hidden="true" id="VIdent_identity.fccFolderPickerMode"
-                prefstring="fccFolderPickerMode"/>
-<textbox hidden="true" id="VIdent_identity.draftFolder"
-                prefstring="draftFolder"/>
-<textbox hidden="true" id="VIdent_identity.draftFolderPickerMode"
-                prefstring="draftFolderPickerMode"/>
-<textbox hidden="true" id="VIdent_identity.stationeryFolder"
-                prefstring="stationeryFolder"/>
-<textbox hidden="true" id="VIdent_identity.stationeryFolderPickerMode"
-                prefstring="stationeryFolderPickerMode"/>
 <hbox>
 <tabbox id="prefTabbox" class="viewSelector ">
 	<hbox>
@@ -110,7 +101,7 @@
 			</hbox>
 			<spacer flex="1"/>
 			<button id="logoButton1" class="v_identity_logo v_identity_logo_button"
-				label="&vident.vidLogo.label; &vident.version;"
+				label="&vident.vidLogo.label; "
 				oncommand="virtualIdentityExtension.prefDialog.openURL('http://www.absorb.it/virtual-id')"
 				tooltiptext="&vI_prefDialog.vidLogo.tooltiptext;" />
 		</vbox>
@@ -127,7 +118,7 @@
 		</tabs>
 		<spacer flex="1" />
 		<button id="logoButton2" class="v_identity_logo v_identity_logo_button"
-				label="&vident.vidLogo.label; &vident.version;"
+				label="&vident.vidLogo.label; "
 				oncommand="virtualIdentityExtension.prefDialog.openURL('http://www.absorb.it/virtual-id')"
 				tooltiptext="&vI_prefDialog.vidLogo.tooltiptext;" hidden="true" />
 	</hbox>
@@ -347,15 +338,6 @@
 							</hbox>
 						</vbox>
 					</hbox>
-					<description id="VIdent_identity.HideSignature.warning" class="widthXX">&vI_prefDialog.composeDialog.HideSignature.warning.desc;</description>
-					<checkbox id="VIdent_identity.hide_signature" label="&vI_prefDialog.composeDialog.HideSignature.label;" disabled="true"
-						prefstring="hide_signature"/>
-					<checkbox id="VIdent_identity.hide_sMime_messageSignature" label="&vI_prefDialog.composeDialog.HideSMimeSignature.label;"
-						prefstring="hide_sMime_messageSignature"/>
-					<checkbox id="VIdent_identity.hide_openPGP_messageSignature" label="&vI_prefDialog.composeDialog.HideOpenPGPSignature.label;"
-						prefstring="hide_openPGP_messageSignature" hidden="true"/>
-					<checkbox id="VIdent_identity.autoReplyToSelf" label="&vI_prefDialog.composeDialog.autoReplyToSelf.label;"
-						prefstring="autoReplyToSelf"/>
 				</groupbox>
 			</tabpanel>
 			<tabpanel orient="vertical">
@@ -364,21 +346,8 @@
 				<caption label="&vI_prefDialog.composeDialog.caption2;"/>
                     <checkbox id="VIdent_identity.show_status" label="&vI_prefDialog.composeDialog.status.label;"
                         tooltiptext="&vI_prefDialog.composeDialog.status.tooltiptext;" prefstring="show_status" />
-					<checkbox id="VIdent_identity.show_smtp" label="&vI_prefDialog.composeDialog.SMTP.label;"
-						tooltiptext="&vI_prefDialog.composeDialog.SMTP.tooltiptext;" prefstring="show_smtp" />
-					<checkbox id="VIdent_identity.fcc_show_switch" label="&vI_prefDialog.composeDialog.fcc_show_switch.label;"
-						tooltiptext="&vI_prefDialog.composeDialog.fcc_show_switch.tooltiptext;" prefstring="fcc_show_switch" />
 					<checkbox id="VIdent_identity.storage_colorIndication" label="&vI_prefDialog.composeDialog.storage_colorIndication.label;"
 						prefstring="storage_colorIndication" />
-				</groupbox>
-				<groupbox>
-				<caption label="&vI_prefDialog.composeDialog.caption3;"/>
-					<checkbox id="VIdent_identity.storage_show_switch" label="&vI_prefDialog.composeDialog.show_switch.label;"
-						prefstring="storage_show_switch"/>
-					<checkbox id="VIdent_identity.storage_show_baseID_switch" label="&vI_prefDialog.composeDialog.show_baseID_switch.label;"
-						prefstring="storage_show_baseID_switch"/>
-					<checkbox id="VIdent_identity.storage_show_SMTP_switch" label="&vI_prefDialog.composeDialog.show_SMTP_switch.label;"
-						prefstring="storage_show_SMTP_switch"/>
 				</groupbox>
 			</tabpanel>
 		</tabpanels>
@@ -391,14 +360,6 @@
 			hidecolumnpicker="true" hidehscroll="true" >
 		<treecols orient="vertical"><treecol flex="1" hideheader="true" primary="true"/></treecols>
 		<treechildren>
-			<treeitem container="true" open="true" >
-				<treerow><treecell label="&vI_prefDialog.sending.Folder.label;" /></treerow>
-				<treechildren>
-					<treeitem><treerow><treecell label="&vI_prefDialog.sending.Folder.row0.label;" /></treerow></treeitem>
-					<treeitem><treerow><treecell label="&vI_prefDialog.sending.Folder.row1.label;" /></treerow></treeitem>
-					<treeitem><treerow><treecell label="&vI_prefDialog.sending.Folder.row2.label;" /></treerow></treeitem>
-				</treechildren>
-			</treeitem>
 			<treeitem><treerow><treecell label="&vI_prefDialog.sending.warnings.label;" /></treerow></treeitem>
 		</treechildren>
 		</tree>
@@ -408,138 +369,6 @@
 			<tab /><tab /><tab id="VIdent_messageDraftsTab"/><tab id="VIdent_messageTemplatesTab"/><tab />
 		</tabs>
 		<tabpanels class="plain">
-			<tabpanel orient="vertical">
-				<dialogheader title="&vI_prefDialog.sending.Folder.header;"/>
-				<groupbox>
-				<caption label="&vI_prefDialog.sending.Folder.caption;"/>
-				<description class="widthXX">&vI_prefDialog.sending.Folder.desc;</description>
-        <checkbox id="VIdent_identity.copyNewEnigmailSettings" label="&vI_prefDialog.sending.Folder.Enigmail.label;"
-          prefstring="copyNewEnigmailSettings" hidden="true"/>
-				<checkbox id="VIdent_identity.copySMIMESettings" label="&vI_prefDialog.sending.Folder.SMIME.label;"
-					prefstring="copySMIMESettings"/>
-				<checkbox id="VIdent_identity.copyAttachVCardSettings" label="&vI_prefDialog.sending.Folder.VCard.label;"
-					prefstring="copyAttachVCardSettings"/>
-				</groupbox>
-			</tabpanel>
-			<tabpanel orient="vertical">
-				<dialogheader title="&vI_prefDialog.sending.fccTab.header;" />
-				<groupbox>
-				<caption label="&vI_prefDialog.sending.fccTab.caption;"/>
-				<hbox align="center">
-					<checkbox id="VIdent_identity.doFcc" label="&fccMailFolder.label;" 
-						accesskey="&fccMailFolder.accesskey;"
-						oncommand="setupFccItems();" prefstring="doFcc"/>
-				</hbox>
-				<radiogroup id="VIdent_doFcc">
-				<grid class="specialFolderPickerGrid">
-					<columns>
-						<column flex="1"/>
-						<column flex="2"/>
-					</columns>
-					<rows>
-						<radio id="VIdent_fcc_Settings_Of_Account" 
-							value="3" label="&vI_prefDialog.sending.vidAccount.label;"
-							oncommand="virtualIdentityExtension.setPickersState('msgFccFolderPicker', 'msgFccAccountPicker', event)" 
-							observes="VIdent_broadcaster_doFcc"/>
-						<radio id="VIdent_fcc_Settings_Of_Default" 
-							value="2" label="&vI_prefDialog.sending.vidDefault.label;"
-							oncommand="virtualIdentityExtension.setPickersState('msgFccFolderPicker', 'msgFccAccountPicker', event)" 
-							observes="VIdent_broadcaster_doFcc"/>
-						<row align="center" id="msgFccAccountPickerRow">
-							<radio id="VIdent_fcc_selectAccount" 
-								value="0" label="&sentFolderOn.label;"
-								accesskey="&sentFolderOn.accesskey;"
-								oncommand="virtualIdentityExtension.setPickersState('msgFccAccountPicker', 'msgFccFolderPicker', event)" 
-								observes="VIdent_broadcaster_doFcc"/>
-						</row> 
-						<row align="center" id="msgFccFolderPickerRow">
-							<radio id="VIdent_fcc_selectFolder" 
-								value="1" label="&sentInOtherFolder.label;"
-								accesskey="&sentInOtherFolder.accesskey;"
-								oncommand="virtualIdentityExtension.setPickersState('msgFccFolderPicker', 'msgFccAccountPicker', event)" 
-								observes="VIdent_broadcaster_doFcc"/>
-						</row>
-					</rows>
-				</grid>
-				</radiogroup>
-				<hbox id="fccReplyFollowsParentBox" align="center" class="fccReplyFollowsParent">
-					<checkbox wsm_persist="true" id="VIdent_identity.fccReplyFollowsParent"
-						label="&fccReplyFollowsParent.label;"
-						accesskey="&fccReplyFollowsParent.accesskey;"
-						prefattribute="value"
-						prefstring="fccReplyFollowsParent"
-						observes="VIdent_broadcaster_doFcc"/>
-				</hbox>
-				</groupbox>
-			</tabpanel>
-			<tabpanel orient="vertical">
-				<dialogheader title="&vI_prefDialog.sending.draftTab.header;" />
-				<groupbox>
-				<caption label="&vI_prefDialog.sending.draftTab.caption;" />
-				<radiogroup id="VIdent_messageDrafts">
-				<grid class="specialFolderPickerGrid">
-					<columns>
-						<column flex="1"/>
-						<column flex="2"/>
-					</columns>
-					<rows>
-						<radio id="VIdent_draft_Settings_Of_Account" 
-							value="3" label="&vI_prefDialog.sending.vidAccount.label;"
-							oncommand="virtualIdentityExtension.setPickersState('msgDraftsFolderPicker', 'msgDraftsAccountPicker', event)" />
-						<radio id="VIdent_draft_Settings_Of_Default" 
-							value="2" label="&vI_prefDialog.sending.vidDefault.label;"
-							oncommand="virtualIdentityExtension.setPickersState('msgDraftsFolderPicker', 'msgDraftsAccountPicker', event)" />
-						<row align="center" id="msgDraftsAccountPickerRow">
-							<radio id="VIdent_draft_selectAccount" 
-								value="0" label="&draftsFolderOn.label;"
-								accesskey="&draftsFolderOn.accesskey;"
-								oncommand="virtualIdentityExtension.setPickersState('msgDraftsAccountPicker', 'msgDraftsFolderPicker', event)" />
-						</row> 
-						<row align="center" id="msgDraftsFolderPickerRow">
-							<radio id="VIdent_draft_selectFolder" 
-								value="1" label="&draftInOtherFolder.label;"
-								accesskey="&draftInOtherFolder.accesskey;"
-								oncommand="virtualIdentityExtension.setPickersState('msgDraftsFolderPicker', 'msgDraftsAccountPicker', event)" />
-						</row>
-					</rows>
-				</grid>
-				</radiogroup>
-				</groupbox>
-			</tabpanel>
-			<tabpanel orient="vertical">
-				<dialogheader title="&vI_prefDialog.sending.tmplTab.header;" />
-				<groupbox>
-				<caption label="&vI_prefDialog.sending.tmplTab.caption;"/>
-				<radiogroup id="VIdent_messageTemplates">
-				<grid class="specialFolderPickerGrid">
-					<columns>
-						<column flex="1"/>
-						<column flex="2"/>
-					</columns>
-					<rows>
-						<radio id="VIdent_tmpl_Settings_Of_Account" 
-							value="3" label="&vI_prefDialog.sending.vidAccount.label;"
-							oncommand="virtualIdentityExtension.setPickersState('msgStationeryFolderPicker', 'msgStationeryAccountPicker', event)" />
-						<radio id="VIdent_tmpl_Settings_Of_Default" 
-							value="2" label="&vI_prefDialog.sending.vidDefault.label;"
-							oncommand="virtualIdentityExtension.setPickersState('msgStationeryFolderPicker', 'msgStationeryAccountPicker', event)" />
-						<row align="center" id="msgStationeryAccountPickerRow">
-							<radio id="VIdent_tmpl_selectAccount" 
-								value="0" label="&templatesFolderOn.label;"
-								accesskey="&templatesFolderOn.accesskey;"
-								oncommand="virtualIdentityExtension.setPickersState('msgStationeryAccountPicker', 'msgStationeryFolderPicker', event)" />
-						</row> 
-						<row align="center" id="msgStationeryFolderPickerRow">
-							<radio id="VIdent_tmpl_selectFolder" 
-								value="1" label="&templateInOtherFolder.label;"
-								accesskey="&templateInOtherFolder.accesskey;"
-								oncommand="virtualIdentityExtension.setPickersState('msgStationeryFolderPicker', 'msgStationeryAccountPicker', event)" />
-						</row>
-					</rows>
-				</grid>
-				</radiogroup>
-				</groupbox>
-			</tabpanel>
 			<tabpanel orient="vertical">
 				<dialogheader title="&vI_prefDialog.sending.warnings.header;"/>
 				<groupbox>
@@ -587,8 +416,8 @@
 					tooltiptext="&vI_prefDialog.storage.tooltiptext;" prefstring="storage"
 					oncommand="virtualIdentityExtension.prefDialog.base.storageConstraint(this);" />
 				<spacer class="paragraph"/>
-                <button id="VIdent_identity.storage.import" label="&vI_prefDialog.storage.import;" oncommand="var vI_localRdfDatasource = new virtualIdentityExtension.rdfDatasourceImporter(window, 'virtualIdentity.rdf');" />
-                <button id="VIdent_identity.storage.export" label="&vI_prefDialog.storage.export;" oncommand="var vI_localRdfDatasource = new virtualIdentityExtension.rdfDatasource(window); vI_localRdfDatasource.export('virtualIdentity.rdf')" />
+                <button id="VIdent_identity.storage.import" label="&vI_prefDialog.storage.import;" oncommand="var vI_localRdfDatasource = new virtualIdentityExtension.rdfDatasourceImporter(window, 'virtualIdentity_0.10.rdf');" />
+                <button id="VIdent_identity.storage.export" label="&vI_prefDialog.storage.export;" oncommand="var vI_localRdfDatasource = new virtualIdentityExtension.rdfDatasource(window); vI_localRdfDatasource.export('virtualIdentity_0.10.rdf')" />
 				</groupbox>
                 <groupbox>
                 <caption label="&vI_prefDialog.storageTab.Tab0.caption2;" />
@@ -621,8 +450,6 @@
 						prefstring="storage_store"/>
 					<checkbox id="VIdent_identity.storage_store_base_id" label="&vI_prefDialog.storage.store_base_id.label;"
 						prefstring="storage_store_base_id"/>
-					<checkbox id="VIdent_identity.storage_store_SMTP" label="&vI_prefDialog.storage.store_SMTP.label;"
-						prefstring="storage_store_SMTP"/>
 					<checkbox id="VIdent_identity.storage_warn_update" label="&vI_prefDialog.storage.warn_update.label;"
 						prefstring="storage_warn_update"/>
 					<checkbox id="VIdent_identity.storage_dont_update_multiple" label="&vI_prefDialog.storage.dont_update_multiple.label;"
@@ -637,8 +464,6 @@
 				<vbox align="left">
 					<checkbox id="VIdent_identity.storageExtras_returnReciept" label="&vI_prefDialog.storageExtras.returnReciept.label;"
 						prefstring="storageExtras_returnReciept"/>
-					<checkbox id="VIdent_identity.storageExtras_fcc" label="&vI_prefDialog.storageExtras.fcc.label;"
-						prefstring="storageExtras_fcc"/>
 					<checkbox id="VIdent_identity.storageExtras_characterEncoding" label="&vI_prefDialog.storageExtras.characterEncoding.label;"
 						prefstring="storageExtras_characterEncoding"/>
 					<checkbox id="VIdent_identity.storageExtras_messageFormat" label="&vI_prefDialog.storageExtras.messageFormat.label;"
@@ -653,21 +478,11 @@
 				<groupbox>
 				<caption label="&vI_prefDialog.storageTab.Tab2.caption;" />
 				<vbox align="left">
-					<hbox><vbox>
 					<label value="&vI_prefDialog.storageExtras.sMime.label;"/>
 					<checkbox id="VIdent_identity.storageExtras_sMime_messageEncryption" label="&vI_prefDialog.storageExtras.sMime.messageEncryption.label;"
 						prefstring="storageExtras_sMime_messageEncryption"/>
 					<checkbox id="VIdent_identity.storageExtras_sMime_messageSignature" label="&vI_prefDialog.storageExtras.sMime.messageSignature.label;"
 						prefstring="storageExtras_sMime_messageSignature"/>
-					</vbox><spacer flex="1"/><vbox id="openPGPencryption" hidden="true">
-					<label value="&vI_prefDialog.storageExtras.openPGP.label;"/>
-					<checkbox id="VIdent_identity.storageExtras_openPGP_messageEncryption" label="&vI_prefDialog.storageExtras.openPGP.messageEncryption.label;"
-						prefstring="storageExtras_openPGP_messageEncryption"/>
-					<checkbox id="VIdent_identity.storageExtras_openPGP_messageSignature" label="&vI_prefDialog.storageExtras.openPGP.messageSignature.label;"
-						prefstring="storageExtras_openPGP_messageSignature"/>
-					<checkbox id="VIdent_identity.storageExtras_openPGP_PGPMIME" label="&vI_prefDialog.storageExtras.openPGP.PGPMIME.label;"
-						prefstring="storageExtras_openPGP_PGPMIME"/>
-					</vbox></hbox>
 				</vbox>
 				<label id="storageExtrasWarning" value="&vI_prefDialog.storageExtras.Warning.label;"/>
 				</groupbox>
@@ -749,8 +564,6 @@
 	</tabpanels>
 </tabbox>
 <browserbox id="virtualIdentityExtension_remoteBrowserBox" class="virtualIdentityExtension_remoteBrowserBox" localCss="localDoc.css" flex="1" hidden="true" type="content" />
-<label id="virtualIdentityExtension_extVersion" value="&vident.version;" hidden="true" />
 </hbox>
 <textbox id="virtualIdentityExtension_debugBox" />
 </dialog>
-</overlay>

@@ -27,7 +27,8 @@ virtualIdentityExtension.ns(function () {
   with(virtualIdentityExtension.LIB) {
 
     let Log = vI.setupLogging("virtualIdentity.overlay");
-
+    var rdfDatasource;
+    
     Components.utils.import("resource://v_identity/vI_rdfDatasource.js", virtualIdentityExtension);
     Components.utils.import("resource://v_identity/vI_account.js", virtualIdentityExtension);
     Components.utils.import("resource://v_identity/vI_prefs.js", virtualIdentityExtension);
@@ -36,15 +37,15 @@ virtualIdentityExtension.ns(function () {
 
     const virtualIdentity_ID = "{dddd428e-5ac8-4a81-9f78-276c734f75b8}"
     AddonManager.getAddonByID(virtualIdentity_ID, function (addon) {
-      if (addon)
+      if (addon) {
         vI.extensionVersion = addon.version;
+      }
     });
 
 
     function extensionInit() {
-      Log.debug("init")
-      vI.upgrade.quickUpgrade();
-      vI.vIaccount_cleanupSystem(); // always clean leftover accounts and directories
+      rdfDatasource = new vI.rdfDatasource(window, "virtualIdentity_0.10.rdf", false); // create this for upgrade and keep it to permanatly enable accountManager observer
+      vI.upgrade.quickUpgrade(rdfDatasource);
 
       if (vI.vIprefs.get("error_console")) {
         document.getElementById("virtualIdentityExtension_vIErrorBoxSplitter").removeAttribute("hidden");
@@ -57,13 +58,5 @@ virtualIdentityExtension.ns(function () {
     }
 
     addEventListener('messagepane-loaded', extensionInit, true);
-    // this is the entry place, nameSpaceWrapper is loaded and the show can start
-    try {
-      Components.utils.import("resource://v_identity/plugins/conversations.js", virtualIdentityExtension);
-    } catch (e) {
-      vI.dumpCallStack(e);
-    }
-
-
   }
 });

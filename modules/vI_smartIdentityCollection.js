@@ -29,6 +29,8 @@ Components.utils.import("resource://v_identity/vI_identityData.js");
 Components.utils.import("resource://v_identity/vI_rdfDatasource.js");
 Components.utils.import("resource://v_identity/vI_prefs.js");
 
+Components.utils.import("resource://v_identity/strftime/strftime.js");
+
 let Log = setupLogging("virtualIdentity.smartIdentityCollection");
 
 function smartIdentityCollection(currentWindow, msgHdr, preseletedID, currentIDisVID, newsgroup, recipients) {
@@ -81,16 +83,17 @@ smartIdentityCollection.prototype = {
 
     var dateObj = new Date();
     var dateString = "";
-    if (formatString == "") dateString = parseInt(dateObj.getTime() / 1000);
+    if (formatString == "") 
+      dateString = parseInt(dateObj.getTime() / 1000);
     else try { //	you never know what the formatString will be...
-      dateString = dateObj.toLocaleFormat(formatString).replace(/\s+|[\x00-\x2a]|\x2c|\x2f|[\x3a-\x40]|[\x5b-\x5d]|\x60|\x7c|[\x7f-\xff]/g, "_");
+      dateString = strftime(formatString, dateObj);
     } catch (e) {};
 
     var new_email = autoString.replace(/%l/g, localpart).replace(/%d/g, domain).replace(/%t/g, dateString);
     Log.debug("new email: " + new_email);
 
     var newIdentity = new identityData(this._currentWindow, new_email,
-      this._preselectedID.fullName, this._preselectedID.key, this._preselectedID.smtpServerKey, null, null)
+      this._preselectedID.fullName, this._preselectedID.key, null, null)
 
     this._allIdentities.addWithoutDuplicates(newIdentity);
     this._selectedValue = 0;
@@ -155,7 +158,7 @@ smartIdentityCollection.prototype = {
     var number = this._headerParser.parseHeadersWithArray(header, emails, fullNames, combinedNames);
     for (var index = 0; index < number; index++) {
       var newIdentity = new identityData(this._currentWindow, emails.value[index], fullNames.value[index],
-        null, NO_SMTP_TAG, null, null);
+        null, null, null);
       identityCollection.addWithoutDuplicates(newIdentity);
     }
   },

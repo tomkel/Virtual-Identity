@@ -89,10 +89,6 @@ virtualIdentityExtension.ns(function () {
           }
         }
 
-        // set SMTP
-        document.getElementById("virtualIdentityExtension_smtpServerListHbox").addNoneServer(); // add non (not stored) Server
-        document.getElementById("virtualIdentityExtension_smtpServerListHbox").smtp = rdfDataEditor.__identityData.smtp.keyNice;
-
         // set extra values
         rdfDataEditor.__identityData.extras.setValuesToEnvironment();
         
@@ -136,21 +132,21 @@ virtualIdentityExtension.ns(function () {
 
       blurEvent: function (elementId) {
         var elem = document.getElementById(elementId);
-        var localIdentityData = new vI.identityData(window, elem.value, null, null, null, null, null, null);
+        var localIdentityData = new vI.identityData(window, elem.value, null, null, null, null, null);
         elem.value = localIdentityData.combinedName;
       },
 
       accept: function () {
         Log.debug("accept");
         var localIdentityData = new vI.identityData(window, document.getElementById("sender").value, null,
-          document.getElementById("virtualIdentityExtension_IdentityList").selectedItem.getAttribute("identitykey"),
-          document.getElementById("virtualIdentityExtension_SmtpServerList").selectedItem.getAttribute("key"));
+          document.getElementById("virtualIdentityExtension_IdentityList").selectedItem.getAttribute("identitykey"));
+
         localIdentityData.extras.getValuesFromEnvironment();
         rdfDataEditor.__rdfDatasource.updateRDF(
           document.getElementById("recipient").value,
           document.getElementById("type_menu").selectedItem.getAttribute("key"),
           localIdentityData,
-          true, true, rdfDataEditor.__recipient, rdfDataEditor.__type, true);
+          true, rdfDataEditor.__recipient, rdfDataEditor.__type, true);
         Log.debug("updateRDF done " + localIdentityData.extras.status());
         return document.getElementById("type_menu").selectedItem.getAttribute("key");
       }

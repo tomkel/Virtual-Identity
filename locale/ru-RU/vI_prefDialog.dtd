@@ -84,39 +84,17 @@
 <!ENTITY vI_prefDialog.composeDialog.caption3 "Переключатели (чекбоксы) хранилища">
 <!ENTITY vI_prefDialog.composeDialog.autoTimestamp.label "Автогенерация E-mail, используя отметку времени (для новых сообщений)">
 <!ENTITY vI_prefDialog.composeDialog.autoTimestamp.tooltiptext "При создании нового сообщения, изменяется E-mail отправителя - к нему добавляется отметка времени. Пример: если Ваш E-mail, к примеру, name@domen.com, то после включения данной функции и при составлении нового письма, будет сгенерирован новый E-mail, к примеру, name1266499936@domen.com. По умолчанию данная функция отключена.">
-<!ENTITY vI_prefDialog.composeDialog.autoTimeFormat.label "Format of Timestamp: Leave empty or use strftime() syntax (&apos;&#37;c&apos;)"> <!-- translate -->
+<!ENTITY vI_prefDialog.composeDialog.autoTimeFormat.label "Format of Timestamp: Leave empty or use strftime() syntax (&apos;&#37;Y&#37;m&#37;d&#37;H&#37;M&#37;S&apos;)"> <!-- translate -->
 <!ENTITY vI_prefDialog.composeDialog.autoTimeString.label "Format of Result: &#37;l localpart, &#37;t timestamp, &#37;d domain. Default &apos;&#37;l&#37;t@&#37;d&apos;"> <!-- translate -->
-<!ENTITY vI_prefDialog.composeDialog.HideSignature.warning.desc "Обратите внимание: чтобы позволять динамическую дезактивацию подписей, Вы должны установить (и активизировать) расширение «Signature Switch». В настоящий момент данная опция не доступна.">
-<!ENTITY vI_prefDialog.composeDialog.HideSignature.label "Удалять любые подписи при использовании виртуальных личных данных">
-<!ENTITY vI_prefDialog.composeDialog.HideSMimeSignature.label "Деактивировать цифровые подписи S/MIME при использовании виртуальных личных данных">
-<!ENTITY vI_prefDialog.composeDialog.HideOpenPGPSignature.label "Деактивировать цифровые подписи openPGP при использовании виртуальных личных данных">
-<!ENTITY vI_prefDialog.composeDialog.autoReplyToSelf.label "Устанавливать виртуальные личные данные в качестве обратного адреса (Reply-To)">
 <!ENTITY vI_prefDialog.composeDialog.status.label "show Status-Bar infos / menu"> <!-- translate -->
 <!ENTITY vI_prefDialog.composeDialog.status.tooltiptext "show Notifications in Status-Bar, display Status-Bar Menu"> <!-- translate -->
 <!ENTITY vI_prefDialog.composeDialog.SMTP.label "Отображать меню SMTP-серверов">
 <!ENTITY vI_prefDialog.composeDialog.SMTP.tooltiptext "Отображать меню доступных SMTP-серверов с возможностью выбора SMTP-сервера, используемого для отправки сообщения.">
-<!ENTITY vI_prefDialog.composeDialog.fcc_show_switch.label "Чекбокс для выборочной активации/деактивации сохранения отправленных сообщений (FCC)">
-<!ENTITY vI_prefDialog.composeDialog.fcc_show_switch.tooltiptext "Отображение переключателя (чекбокса) для возможности активации/деактивации сохранения отправленных сообщений (FCC) «на лету»">
 <!ENTITY vI_prefDialog.composeDialog.show_switch.label "Чекбокс для выборочной активации/деактивации сохранения данных при отправке сообщений">
 <!ENTITY vI_prefDialog.composeDialog.show_baseID_switch.label "Чекбокс для выборочной активации/деактивации сохранения учетных записей при отправке сообщений">
 <!ENTITY vI_prefDialog.composeDialog.show_SMTP_switch.label "Чекбокс для выборочной активации/деактивации сохранения SMTP-серверов при отправке сообщений">
 <!ENTITY vI_prefDialog.composeDialog.storage_colorIndication.label "Выделять цветом элементы личных данных, которые будут сохранены при отправке сообщения">
 
-<!ENTITY vI_prefDialog.sending.Folder.label "Атрибуты / Копии / Папки">
-<!ENTITY vI_prefDialog.sending.Folder.row0.label "Отправленные сообщения">
-<!ENTITY vI_prefDialog.sending.Folder.row1.label "Черновики">
-<!ENTITY vI_prefDialog.sending.Folder.row2.label "Шаблоны">
-<!ENTITY vI_prefDialog.sending.warnings.label "Предупреждения">
-
-<!ENTITY vI_prefDialog.sending.Folder.header "Атрибуты сообщений">
-<!ENTITY vI_prefDialog.sending.Folder.caption "Атрибуты сообщений для копирования">
-<!ENTITY vI_prefDialog.sending.Folder.desc "Копировать следующие атрибуты сообщений из учетной записи:">
-<!ENTITY vI_prefDialog.sending.Folder.Enigmail.label "OpenPGP / Enigmail settings"> <!-- translate -->
-<!ENTITY vI_prefDialog.sending.Folder.SMIME.label "S/MIME настройки безопасности">
-<!ENTITY vI_prefDialog.sending.Folder.VCard.label "vCard вложения">
-
-<!ENTITY vI_prefDialog.sending.fccTab.header "Папка отправленных сообщений">
-<!ENTITY vI_prefDialog.sending.fccTab.caption "Действие при отправке сообщения с виртуальными личными данными">
 <!ENTITY vI_prefDialog.sending.vidAccount.label "Папка, используемая учетной записью, изменяемой с помощью Virtual Identity">
 <!ENTITY vI_prefDialog.sending.vidDefault.label "Папка, используемая учетной записью по умолчанию">
 
@@ -126,6 +104,7 @@
 <!ENTITY vI_prefDialog.sending.tmplTab.header "Папка шаблонов">
 <!ENTITY vI_prefDialog.sending.tmplTab.caption "Помещать шаблоны в:">
 
+<!ENTITY vI_prefDialog.sending.warnings.label "Предупреждения">
 <!ENTITY vI_prefDialog.sending.warnings.header "Предупреждения">
 <!ENTITY vI_prefDialog.sending.warnings.caption "Предупреждение перед отправкой сообщения">
 <!ENTITY vI_prefDialog.sending.warnings.warnNonvirtual.label "Предупреждать о любом использовании не виртуальных (из учетной записи) личных данных">
@@ -141,7 +120,7 @@
 <!ENTITY vI_prefDialog.storageTab.Tab0.header "Хранилище виртуальных личных данных">
 <!ENTITY vI_prefDialog.storageTab.Tab0.caption "Использование хранилища">
 <!ENTITY vI_prefDialog.storageTab.Tab0.caption2 "Storage Editor"> <!-- translate -->
-<!ENTITY vI_prefDialog.storageTab.DateFormat.label "Format of Dates: Leave empty or use strftime() syntax (&apos;&#37;c&apos;)"> <!-- translate -->
+<!ENTITY vI_prefDialog.storageTab.DateFormat.label "Format of Dates: Leave empty or use strftime() syntax (&apos;&#37;F&apos;)"> <!-- translate -->
 <!ENTITY vI_prefDialog.storage.label "Сохранять (и восстанавливать) используемые личные данные">
 <!ENTITY vI_prefDialog.storage.tooltiptext "Личные данные, используемые для отправки и связанные с получателями сообщений, будут сохраняться. Если вы снова пишите сообщение получателю, которому ранее уже отсылали сообщение, то будут использоваться соответствующие личные данные (виртуальные или реальные).">
 <!ENTITY vI_prefDialog.storage.openEditor "Редактировать сохраненные данные">
@@ -188,8 +167,3 @@
 <!ENTITY vI_prefDialog.notifyDebug.label "Показывать область с отладочной информацией">
 <!ENTITY vI_prefDialog.debugToFile.label "debug to file"> <!-- translate -->
 <!ENTITY vI_prefDialog.debugToFile.choose "choose"> <!-- translate -->
-
-<!-- just for TB 1.5. ReplyFollowsParent not available -->
-<!-- fields will be hidden, dont have to be translated -->
-<!ENTITY fccReplyFollowsParent.label "">
-<!ENTITY fccReplyFollowsParent.accesskey "">

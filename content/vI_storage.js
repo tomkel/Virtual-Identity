@@ -91,9 +91,6 @@ virtualIdentityExtension.ns(function () {
       awPopupOnCommand: function (element, currentWindow) {
         Log.debug("awPopupOnCommand '" + element.id + "' '" + element.value + "'");
         storage.__updateVIdentityFromStorage(element.parentNode.nextSibling.firstChild, currentWindow);
-        if (element.selectedItem.getAttribute("value") == "addr_reply") // if reply-to is manually entered disable AutoReplyToSelf
-          currentWindow.document.getElementById("virtualIdentityExtension_autoReplyToSelfLabel").setAttribute("hidden", "true");
-
       },
 
       initialized: null,
@@ -143,15 +140,6 @@ virtualIdentityExtension.ns(function () {
             storage.replacement_functions.awSetInputAndPopupValue(inputElem, inputValue, popupElem, popupValue, rowNumber)
           }
         }
-
-        // reset unavailable storageExtras preferences
-        AddonManager.getAddonByID("{847b3a00-7ab1-11d4-8f02-006008948af5}", function (addon) {
-          if (addon && !addon.userDisabled && !addon.appDisable) {
-            vI.vIprefs.commit("storageExtras_openPGP_messageEncryption", false)
-            vI.vIprefs.commit("storageExtras_openPGP_messageSignature", false)
-            vI.vIprefs.commit("storageExtras_openPGP_PGPMIME", false)
-          }
-        });
       },
 
       firstUsedInputElement: null, // this stores the first Element for which a Lookup in the Storage was successfull
@@ -192,9 +180,9 @@ virtualIdentityExtension.ns(function () {
 
         // firstUsedInputElement was set before and we are not editing the same
         var isNotFirstInputElement = (storage.firstUsedInputElement && storage.firstUsedInputElement != inputElement)
-        var currentIdentity = currentDocument.getElementById("virtualIdentityExtension_msgIdentityClone").identityData
+        var currentIdentity = currentDocument.getElementById("msgIdentity").identityData
         var storageResult = storage._rdfDatasourceAccess.updateVIdentityFromStorage(inputElement.value, recipientType,
-          currentIdentity, currentDocument.getElementById("virtualIdentityExtension_msgIdentityClone").vid, isNotFirstInputElement);
+          currentIdentity, currentDocument.getElementById("msgIdentity").vid, isNotFirstInputElement);
 
         if (storageResult.identityCollection.number == 0) return; // return if there was no match
         Log.debug("__updateVIdentityFromStorage result: " + storageResult.result);
@@ -205,15 +193,15 @@ virtualIdentityExtension.ns(function () {
         if (storageResult.result != "equal") {
           for (var j = 0; j < storageResult.identityCollection.number; j++) {
             Log.debug("__updateVIdentityFromStorage adding: " + storageResult.identityCollection.identityDataCollection[j].combinedName);
-            let menuItem = currentDocument.getElementById("virtualIdentityExtension_msgIdentityClone")
-              .addIdentityToCloneMenu(storageResult.identityCollection.identityDataCollection[j])
+            let menuItem = currentDocument.getElementById("msgIdentity")
+              .addIdentityToMsgIdentityMenu(storageResult.identityCollection.identityDataCollection[j])
             if (!newMenuItem) newMenuItem = menuItem;
           }
         }
         if (storageResult.result == "accept") {
           Log.debug("__updateVIdentityFromStorage selecting: " + storageResult.identityCollection.identityDataCollection[0].combinedName);
-          currentDocument.getElementById("virtualIdentityExtension_msgIdentityClone").selectedMenuItem = newMenuItem;
-          if (currentDocument.getElementById("virtualIdentityExtension_msgIdentityClone").vid)
+          currentDocument.getElementById("msgIdentity").selectedMenuItem = newMenuItem;
+          if (currentDocument.getElementById("msgIdentity").vid)
             vI.StorageNotification.info(storage.stringBundle.GetStringFromName("vident.smartIdentity.vIStorageUsage") + ".");
         }
       },

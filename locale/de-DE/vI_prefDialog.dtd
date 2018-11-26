@@ -84,39 +84,17 @@
 <!ENTITY vI_prefDialog.composeDialog.caption3 "Speicher-Auswahl">
 <!ENTITY vI_prefDialog.composeDialog.autoTimestamp.label "erzeuge automatischen Zeitstempel für neue mails">
 <!ENTITY vI_prefDialog.composeDialog.autoTimestamp.tooltiptext "Verändere die Absender-Adresse für neue emails mit einem Zeitstempel. Dies ist ein einfacher Weg um automatisch neue Identitäten zu erzeugen.">
-<!ENTITY vI_prefDialog.composeDialog.autoTimeFormat.label "Format des Zeitstempels: Leer lassen oder die strftime()-Syntax nutzen (&apos;&#37;c&apos;)"> <!-- translate -->
+<!ENTITY vI_prefDialog.composeDialog.autoTimeFormat.label "Format des Zeitstempels: Leer lassen oder die strftime()-Syntax nutzen (&apos;&#37;Y&#37;m&#37;d&#37;H&#37;M&#37;S&apos;)"> <!-- translate -->
 <!ENTITY vI_prefDialog.composeDialog.autoTimeString.label "Format des Absenders: &#37;l lokaler Teil, &#37;t Zeitstempel, &#37;d domain. Default &apos;&#37;l&#37;t@&#37;d&apos;"> <!-- translate -->
-<!ENTITY vI_prefDialog.composeDialog.HideSignature.warning.desc "Hinweis: Zur dynamischen Abschaltung der &apos;Signatur&apos; muss die Erweiterung &apos;Signature Switch&apos; installiert (und aktiviert) sein. Zur Zeit steht diese Option nicht zur Verfügung.">
-<!ENTITY vI_prefDialog.composeDialog.HideSignature.label "entferne eine &apos;Signatur&apos; bei Nutzung einer Virtuellen Identität">
-<!ENTITY vI_prefDialog.composeDialog.HideSMimeSignature.label "entferne S/MIME Signatur Nutzung einer Virtuellen Identität">
-<!ENTITY vI_prefDialog.composeDialog.HideOpenPGPSignature.label "entferne openPGP Signatur bei Nutzung einer Virtuellen Identität">
-<!ENTITY vI_prefDialog.composeDialog.autoReplyToSelf.label "setze Virtuelle Identität als Reply-To Adresse">
 <!ENTITY vI_prefDialog.composeDialog.status.label "zeige Status-Bar Infos / Menu">
 <!ENTITY vI_prefDialog.composeDialog.status.tooltiptext "zeigt Hinweise im Status-Bar sowie Status-Bar Menu">
 <!ENTITY vI_prefDialog.composeDialog.SMTP.label "zeige SMTP Auswahlmenu">
 <!ENTITY vI_prefDialog.composeDialog.SMTP.tooltiptext "zeige Menu um zwischen existierenden SMTP-Servern auszuwählen">
-<!ENTITY vI_prefDialog.composeDialog.fcc_show_switch.label "zeige Schalter um Sende-Kopien an-/abzuschalten (Fcc)">
-<!ENTITY vI_prefDialog.composeDialog.fcc_show_switch.tooltiptext "zeige Schalter um das Speichern von Kopien gesendeter Mails an-/abzuschalten (Fcc)">
 <!ENTITY vI_prefDialog.composeDialog.show_switch.label "zeige Schalter zum Speichern von Identitäten">
 <!ENTITY vI_prefDialog.composeDialog.show_baseID_switch.label "zeige Schalter zum Speichern von Basis-Identitäten">
 <!ENTITY vI_prefDialog.composeDialog.show_SMTP_switch.label "zeige Schalter zum Speichern des SMTP">
 <!ENTITY vI_prefDialog.composeDialog.storage_colorIndication.label "kennzeichne gespeicherte Identitäts-Bereiche farbig">
 
-<!ENTITY vI_prefDialog.sending.Folder.label "Eigenschaften / Kopien">
-<!ENTITY vI_prefDialog.sending.Folder.row0.label "Gesendete Emails">
-<!ENTITY vI_prefDialog.sending.Folder.row1.label "Entwürfe">
-<!ENTITY vI_prefDialog.sending.Folder.row2.label "Vorlagen">
-<!ENTITY vI_prefDialog.sending.warnings.label "Warnungen">
-
-<!ENTITY vI_prefDialog.sending.Folder.header "Email Eigenschaften">
-<!ENTITY vI_prefDialog.sending.Folder.caption "zu Kopierende Eigenschaften">
-<!ENTITY vI_prefDialog.sending.Folder.desc "folgende Einstellungen der zugrunde liegenden Identität kopieren:">
-<!ENTITY vI_prefDialog.sending.Folder.Enigmail.label "OpenPGP / Enigmail Einstellungen">
-<!ENTITY vI_prefDialog.sending.Folder.SMIME.label "S/MIME Sicherheitseinstellungen">
-<!ENTITY vI_prefDialog.sending.Folder.VCard.label "anzuhängende Visitenkarten">
-
-<!ENTITY vI_prefDialog.sending.fccTab.header "Ordner für gesendete Emails">
-<!ENTITY vI_prefDialog.sending.fccTab.caption "Beim Senden von Nachrichten automatisch">
 <!ENTITY vI_prefDialog.sending.vidAccount.label "Ordner des Accounts, der durch Virtual Identity geändert wurde">
 <!ENTITY vI_prefDialog.sending.vidDefault.label "Ordner des Standard-Accounts">
 
@@ -126,6 +104,7 @@
 <!ENTITY vI_prefDialog.sending.tmplTab.header "Ordner für Vorlagen">
 <!ENTITY vI_prefDialog.sending.tmplTab.caption "Speicherort für Templates">
 
+<!ENTITY vI_prefDialog.sending.warnings.label "Warnungen">
 <!ENTITY vI_prefDialog.sending.warnings.header "Warnungen">
 <!ENTITY vI_prefDialog.sending.warnings.caption "vor dem Senden einer Nachricht">
 <!ENTITY vI_prefDialog.sending.warnings.warnNonvirtual.label "warne bei jeder Verwendung einer dauerhaft gespeicherten Identität">
@@ -141,7 +120,7 @@
 <!ENTITY vI_prefDialog.storageTab.Tab0.header "Identitäts-Speicher">
 <!ENTITY vI_prefDialog.storageTab.Tab0.caption "Speicher-Benutzung">
 <!ENTITY vI_prefDialog.storageTab.Tab0.caption2 "Speicher-Editor"> <!-- translate -->
-<!ENTITY vI_prefDialog.storageTab.DateFormat.label "Datums/Zeit-Format: Leer lassen oder die strftime()-Syntax nutzen (&apos;&#37;c&apos;)"> <!-- translate -->
+<!ENTITY vI_prefDialog.storageTab.DateFormat.label "Datums/Zeit-Format: Leer lassen oder die strftime()-Syntax nutzen (&apos;&#37;F&apos;)"> <!-- translate -->
 <!ENTITY vI_prefDialog.storage.label "speichere (und lese) genutzte Identitäten">
 <!ENTITY vI_prefDialog.storage.tooltiptext "Verwendete Identitäten können gespeichert werden. Schreibst Du dem selben Empfänger erneut eine Email, wird die gleiche virtuelle oder nicht-virtuelle Identität benutzt.">
 <!ENTITY vI_prefDialog.storage.openEditor "bearbeite gespeicherte Daten">
@@ -188,9 +167,3 @@
 <!ENTITY vI_prefDialog.notifyDebug.label "zeige Bereich mit Informationen zur Fehlersuche">
 <!ENTITY vI_prefDialog.debugToFile.label "speicher Fehlerlog">
 <!ENTITY vI_prefDialog.debugToFile.choose "wähle">
-
-
-<!-- just for TB 1.5. ReplyFollowsParent not available -->
-<!-- fields will be hidden, dont have to be translated -->
-<!ENTITY fccReplyFollowsParent.label "">
-<!ENTITY fccReplyFollowsParent.accesskey "">

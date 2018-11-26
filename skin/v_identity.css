@@ -2,27 +2,23 @@
 @import url("chrome://v_identity/locale/logo.css"); 
 @namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
 
-#virtualIdentityExtension_fccSwitch[vid="false"] {
-	display: none;
-}
-
-#virtualIdentityExtension_msgIdentityClone .smtpServerListHbox {
-	margin: 0px;
-	-moz-appearance: textfield;
-}
-
 .mismatchLine {
     -moz-binding: url("chrome://v_identity/content/bindings/vI_rdfAccountMismatchDialog.xml#mismatch-line");
+    padding: 10px;
 }
 
 .mismatchMenulist {
     -moz-binding: url("chrome://v_identity/content/bindings/vI_rdfAccountMismatchDialog.xml#mismatch-menulist");
+    margin: 5px;
 }
 
 .mismatchMenupopup {
     -moz-binding: url("chrome://v_identity/content/bindings/vI_rdfAccountMismatchDialog.xml#mismatch-menupopup");
 }
 
+.identityDesc-count-cell {
+  text-align: center;
+}
 
 .selectorListitem {
     -moz-binding: url("chrome://v_identity/content/prefDialog/vI_prefDialog.xml#selectorListitem");
@@ -31,55 +27,42 @@
     -moz-binding: url("chrome://v_identity/content/prefDialog/vI_prefDialog.xml#identitySelector");
 }
 
-
-
 .mismatchMenuitem {
     -moz-binding: url("chrome://v_identity/content/bindings/vI_rdfAccountMismatchDialog.xml#mismatch-menuitem");
 }
 
-.identityDesc-ext1, .identityDesc-ext2, .identityDesc-count {
-    font-style: italic;
-    color:      graytext;
+.identityDesc-count {
+  text-align: center;
 }
 
-.smtpServerListHbox {
-	-moz-binding: url("chrome://v_identity/content/bindings/v_identity.xml#smtpServerList");
+.identityDesc-pre, .identityDesc-mid, .identityDesc-post {
+  margin: 0;
 }
+
+
+/*.identityDesc-ext1, .identityDesc-ext2, .identityDesc-count {
+    font-style: italic;
+    color:      graytext;
+}*/
+
 #virtualIdentityExtension_rdfDataEditorContent checkbox.vI_plain {
 	display: none;
 }
 
-.smtpServerHbox {
-	margin: -1px 0px -1px -1px;
-}
-
-.identity_clone-menulist .contentHbox {
+.vI_msgIdentity-menulist .contentHbox {
 	padding-right: 0.25em;
 }
 
-.identity_clone-menulist .smtpServerMenuList {
-	border-style: none;
-	-moz-appearance: none;
-	margin: 0px;
-	padding: 0px;
-	color: graytext;
-	text-align: center;
-	background-color: transparent;
-}
-
-.identityHbox, .baseIDHbox, .smtpServerHbox {
-	background-color: transparent;
-}
-.identityHbox[checked="true"][colorize="true"], .baseIDHbox[checked="true"][colorize="true"], .smtpServerHbox[checked="true"][colorize="true"] {
+#identityHbox[checked="true"][colorize="true"] textbox, #identityHbox[checked="true"][colorize="true"] .virtIdLabel, .baseIDHbox[checked="true"][colorize="true"] {
 	background-color: rgb(235, 245, 235);
 }
-.identityHbox {
+#identityHbox {
 	padding-right: 0.25em;
 }
 .baseIDHbox {
 	padding-left: 0.25em;
 }
-.baseIDHbox[checked="true"][colorize="true"][disabled="true"], .smtpServerHbox[checked="true"][colorize="true"][disabled="true"] {
+.baseIDHbox[checked="true"][colorize="true"][disabled="true"] {
 	background-color: transparent;
 }
 
@@ -88,6 +71,11 @@ checkbox.vI_plain > .checkbox-spacer-box > .checkbox-check {
 }
 checkbox.vI_plain > .checkbox-label-center-box, checkbox.vI_plain > .checkbox-label-box {
 	display: none;
+}
+
+#virtualIdentityExtension_rdfAccountMismatchDialog_groupbox description {
+        font-size: normal;
+        font-weight: bold;
 }
 
 checkbox.vI_plain {
@@ -201,6 +189,10 @@ image#storageUp[featureDisabled="true"]		{ -moz-image-region: rect(30px, 48px, 6
 	padding-left: 8px;
 }
 
+#prefTabbox radio .radio-check {
+  display: none;
+}
+
 .paneButtonIcon {
 	width: 56px;
 	height: 52px;
@@ -268,16 +260,6 @@ treechildren::-moz-tree-cell(yes) {
 	visibility: visible;
 }
 
-#virtualIdentityExtension_vIStatusMenu[save="ok"][smtp="save"] {
-	list-style-image: url("chrome://v_identity/skin/vI_bl.png");
-	visibility: visible;
-}
-
-#virtualIdentityExtension_vIStatusMenu[save="base"][smtp="save"] {
-	list-style-image: url("chrome://v_identity/skin/vI_gebl.png");
-	visibility: visible;
-}
-
 treechildren::-moz-tree-cell-text(user) {
 	font-weight: bold;
 }
@@ -323,7 +305,7 @@ treechildren::-moz-tree-cell-text(locked) {
 }
 
 .virtualIdentityExtension_vINotificationLogo {
-	margin: 0 0 0 0.5em;
+	margin: 0 0.5em 0 0.5em;
 	padding: 0;
 }
 
@@ -341,50 +323,22 @@ treechildren::-moz-tree-cell-text(locked) {
     height: 10em;
 }
 
-.identity_clone-menulist {
-	-moz-binding: url("chrome://v_identity/content/bindings/v_identity.xml#fromMenuList_clone");
-	-moz-appearance: textfield;
-	margin: 2px 4px;
-	border: 2px solid;
-	-moz-border-top-colors: ThreeDShadow ThreeDDarkShadow;
-	-moz-border-right-colors: ThreeDHighlight ThreeDLightShadow;
-	-moz-border-bottom-colors: ThreeDHighlight ThreeDLightShadow;
-	-moz-border-left-colors: ThreeDShadow ThreeDDarkShadow;
-	padding: 0px;
-	background-color: -moz-Field;
-	color: -moz-FieldText;
+#identityHbox .menulist-editable-input[nomatch="true"][highlightnonmatches="true"] {
+  color: red;
+}
+
+#msgIdentity {
+	-moz-binding: url("chrome://v_identity/content/bindings/v_identity.xml#fromMenuList");
+}
+
+#msgIdentity menuitem {
+        -moz-binding: url("chrome://v_identity/content/bindings/v_identity.xml#fromPopupItem");
 }
 
 .description-treecell {
 	-moz-binding: url("chrome://v_identity/content/bindings/v_identity.xml#descriptionTreeCell");
 	color: red;
 }
-
-.identity_clone-menulist .smtpServerHbox, .identity_clone-menulist .smtpServerMenuList, .identity_clone-menulist .smtpServerMenuList .menulist-label-box {
-	border: medium none ; margin: 0px; height: 1em; max-height: 1em;
-}
-
-
-.identity_clone-menulist .smtpServerMenuList .menuitem-non-iconic {
-	padding: 0;
-}
-
-.identity_clone-menulist .smtpServerMenuList .menuitem-label {
-	text-align:	center;
-}
-
-.identity_clone-menulist .smtpServerMenuList .menulist-icon, .smtpServerMenuList .menulist-dropmarker {
-	display: none;
-}
-
-.smtpServerListHbox[showSmtp="false"], .identity_clone-menulist[showSmtp="false"] .menupopup_clone-smtp {
-	display: none;
-}
-
-.autoReplyTo {
-	-moz-binding: url("chrome://v_identity/content/bindings/v_identity.xml#autoReplyTo");
-}
-
 
 .identityDataTooltip {
 	-moz-binding: url("chrome://v_identity/content/bindings/v_identity.xml#vI_identityDataTooltip");
@@ -405,27 +359,18 @@ treechildren::-moz-tree-cell-text(locked) {
 	padding: 3px;
 }
 
-.identity_clone-popup-item {
-	-moz-binding: url("chrome://v_identity/content/bindings/v_identity.xml#fromPopupItem_clone");
+.vI_msgIdentity-popup-item {
+	-moz-binding: url("chrome://v_identity/content/bindings/v_identity.xml#vI_menupopupItem");
 	padding: 0;
 	margin: 0;
 }
 
-.auto-reply-to {
-	-moz-binding: url("chrome://v_identity/content/bindings/v_identity.xml#autoReplyTo");
-}
-
-.menulist_clone-icon {
-	margin: 	-2px 0pt -2px 3px;
-	-moz-image-region: rect(0px, 16px, 16px, 0px);
-}
-
-.menupopup_clone-icon{
+.vI_menupopup-icon{
 	margin: 	0 3px;
 	padding:	0;
 }
 
-.menulist_clone-textbox, .menupopup_clone-text, .menupopup_clone-description {
+.vI_menupopup-text, .vI_menupopup-description {
 	margin:		0;
 	padding: 	1px;
 	background-color: transparent;
@@ -434,50 +379,50 @@ treechildren::-moz-tree-cell-text(locked) {
 }
 
 
-.menulist_clone-textbox .textbox-search-icons {
+#identityHbox .menulist-editable-input .textbox-search-icons, #identityHbox .menulist-editable-input .textbox-search-sign {
 	display:	none;
 }
 
-.menu_clone-vid, .menupopup_clone-vid {
+.vI_menu-vid, .vI_menupopup-vid {
 	margin: 	0 5px 0 0;
 	font-style:	italic;
 	color:		graytext;
 }
 
-.menupopup_clone-vid {
+.vI_menupopup-vid {
 	margin: 0;
 	padding-left: 0;
 }
-.menupopup_clone-description, .menu_clone-description {
+.vI_menupopup-description, .vI_menupopup-idDescription, .vI_menu-description, .vI_menu-idDescription {
 	margin: 	0 5px 0 0;
 	font-style:	italic;
 	color:		graytext;
 }
 
-.menupopup_clone-description {
+.vI_menupopup-description {
 	margin: 	0 2px 0 0;
 	padding-right:	0;
 }
 
-.menupopup_clone-smtp {
-	margin: 1px 0pt 1px 4px;
-	text-align: center;
-	color: graytext;
+#msgIdentityPopup menuitem[command="cmd_customizeFromAddress"] {
+        display: none;
 }
 
-.identity_clone-menulist[vid="true"], .identity_clone-popup-item[vid="true"] {
+#fromMenuList[vid="true"], .vI_msgIdentity-popup-item[vid="true"] {
 	list-style-image: url("chrome://messenger/skin/addressbook/icons/addressbook-toolbar-small.png");
 	-moz-image-region: rect(0px 16px 16px 0px);	
 }
 
-.identity_clone-menulist[vid="false"], .identity_clone-popup-item[vid="false"] {
-	list-style-image: url("chrome://messenger/skin/addressbook/icons/abcard.png");
+.vI_menupopupItem[vid="false"] .vI_menupopup-idDescription, #msgIdentity[vid="false"] .vI_menu-idDescription {
+        display: none;
+}
+.vI_menupopupItem[vid="true"] .vI_menupopup-description, #msgIdentity[vid="true"] .vI_menu-description {
+        display: none;
 }
 
-/*  this is only for TB < 3 to indicate virtual Identity, now done with autocomplete css */
-/*.menulist_clone-textbox[nomatch="true"] {
-  	color: green;
-}*/
+#fromMenuList[vid="false"], .vI_msgIdentity-popup-item[vid="false"] {
+	list-style-image: url("chrome://messenger/skin/addressbook/icons/abcard.png");
+}
 
 .virtIdLabel[vid="false"], .virtualIdentityExtension_Logo[vid="false"] {
 	display:	none;
@@ -494,7 +439,7 @@ treechildren::-moz-tree-cell-text(locked) {
 	-moz-image-region: rect(0px 16px 16px 0px);
 }
 
-#fromPopupItem_clone .menulist-menupopup {
+#vI_menupopupItem .menulist-menupopup {
 	padding: 0;
 }
 

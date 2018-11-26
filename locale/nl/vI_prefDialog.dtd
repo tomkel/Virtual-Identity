@@ -32,7 +32,7 @@
 
 <!ENTITY vI_prefDialog.smartTab1.header "Slim Antwoorden - Header zoeken">
 <!ENTITY vI_prefDialog.smartTab1.caption "1. adressen ophalen">
-<!ENTITY vI_prefDialog.smartReplyTab.Tab1.desc "Om een Antwoord-identiteit te vinden moet Slim Antwoorden een lijst van mogelijke afzendersidentiteiten ophalen. Daarom worden de koptekstvelden ‘Aan’ en ‘Cc’ geanalyseerd. Als Slim Antwoorden nog meer koptekstvelden moet analyseren kunt u ze hier ingeven (wellicht dient u een andere extensie te installeren om ze te herkennen, zoals bijvoorbeeld enigmail or mnenhy). Als u ‘:@’ aan een ingave toevoegt worden alleen e-mailadressen gebruikt; namen worden genegeerd.">
+<!ENTITY vI_prefDialog.smartReplyTab.Tab1.desc "Om een Antwoord-identiteit te vinden moet Slim Antwoorden een lijst van mogelijke afzendersidentiteiten ophalen. Daarom worden de koptekstvelden ‘Aan’ en ‘Cc’ geanalyseerd. Als Slim Antwoorden nog meer koptekstvelden moet analyseren kunt u ze hier ingeven. Als u ‘:@’ aan een ingave toevoegt worden alleen e-mailadressen gebruikt; namen worden genegeerd.">
 <!ENTITY vI_prefDialog.smartReply.headers.desc "Aanvullende kopteksten - één per regel, bijvoorbeeld ‘x-original-to’, ‘x-original-to:@’ of ‘x-original-to:2:@’">
 <!ENTITY vI_prefDialog.smartReply.headers.reset "Standaardwaarden instellen">
 
@@ -84,39 +84,17 @@
 <!ENTITY vI_prefDialog.composeDialog.caption3 "Opslagschakelaars">
 <!ENTITY vI_prefDialog.composeDialog.autoTimestamp.label "Tijdsafdrukidentiteit voor nieuwe berichten automatisch aanmaken">
 <!ENTITY vI_prefDialog.composeDialog.autoTimestamp.tooltiptext "Bij het schrijven van een nieuw bericht kunt u uw gebruikelijke afzendersadres aanpassen met een tijdsafdruk. Een eenvoudige manier om unieke identiteiten aan te maken, staat standaard uit.">
-<!ENTITY vI_prefDialog.composeDialog.autoTimeFormat.label "Format of Timestamp: Leave empty or use strftime() syntax (&apos;&#37;c&apos;)"> <!-- translate -->
+<!ENTITY vI_prefDialog.composeDialog.autoTimeFormat.label "Format of Timestamp: Leave empty or use strftime() syntax (&apos;&#37;Y&#37;m&#37;d&#37;H&#37;M&#37;S&apos;)"> <!-- translate -->
 <!ENTITY vI_prefDialog.composeDialog.autoTimeString.label "Format of Result: &#37;l localpart, &#37;t timestamp, &#37;d domain. Default &apos;&#37;l&#37;t@&#37;d&apos;"> <!-- translate -->
-<!ENTITY vI_prefDialog.composeDialog.HideSignature.warning.desc "Opmerking: Om dynamisch deactiveren van handtekeningen in te schakelen dient u de ‘Signature Switch’ extensie te installeren (en activeren). Op dit moment is deze optie niet beschikbaar.">
-<!ENTITY vI_prefDialog.composeDialog.HideSignature.label "Alle handtekeningen verwijderen bij gebruik van een virtuele identiteit">
-<!ENTITY vI_prefDialog.composeDialog.HideSMimeSignature.label "S/MIME-ondertekening deactiveren bij gebruik virtuele identiteit">
-<!ENTITY vI_prefDialog.composeDialog.HideOpenPGPSignature.label "openPGP-ondertekening deactiveren bij gebruik virtuele identiteit">
-<!ENTITY vI_prefDialog.composeDialog.autoReplyToSelf.label "Virtuele identiteit als Reply-To-adres instellen">
 <!ENTITY vI_prefDialog.composeDialog.status.label "show Status-Bar infos / menu"> <!-- translate -->
 <!ENTITY vI_prefDialog.composeDialog.status.tooltiptext "show Notifications in Status-Bar, display Status-Bar Menu"> <!-- translate -->
 <!ENTITY vI_prefDialog.composeDialog.SMTP.label "SMTP-menu weergeven">
 <!ENTITY vI_prefDialog.composeDialog.SMTP.tooltiptext "Menu weergeven om beschikbare SMTP-servers te selecteren">
-<!ENTITY vI_prefDialog.composeDialog.fcc_show_switch.label "Schakelaar weergeven om opslaan van verzonden e-mailberichten (fcc) te activeren/deactiveren">
-<!ENTITY vI_prefDialog.composeDialog.fcc_show_switch.tooltiptext "Knop weergeven om opslaan van verzonden e-mailberichten (fcc) tijdens verwerking te activeren/deactiveren">
 <!ENTITY vI_prefDialog.composeDialog.show_switch.label "Aanvinkveld voor opslaan van identiteiten">
 <!ENTITY vI_prefDialog.composeDialog.show_baseID_switch.label "Aanvinkveld voor opslaan van basisidentiteiten">
 <!ENTITY vI_prefDialog.composeDialog.show_SMTP_switch.label "Aanvinkveld voor opslaan van SMTP">
 <!ENTITY vI_prefDialog.composeDialog.storage_colorIndication.label "Op te slaan identiteitsgedeelten kleuren">
 
-<!ENTITY vI_prefDialog.sending.Folder.label "Eigenschappen / Kopieën">
-<!ENTITY vI_prefDialog.sending.Folder.row0.label "Verzonden berichten">
-<!ENTITY vI_prefDialog.sending.Folder.row1.label "Concepten">
-<!ENTITY vI_prefDialog.sending.Folder.row2.label "Sjablonen">
-<!ENTITY vI_prefDialog.sending.warnings.label "Waarschuwingen">
-
-<!ENTITY vI_prefDialog.sending.Folder.header "Berichteigenschappen">
-<!ENTITY vI_prefDialog.sending.Folder.caption "Te kopiëren eigenschappen">
-<!ENTITY vI_prefDialog.sending.Folder.desc "De volgende eigenschappen van de vorige identiteit overnemen:">
-<!ENTITY vI_prefDialog.sending.Folder.Enigmail.label "OpenPGP / Enigmail settings"> <!-- translate -->
-<!ENTITY vI_prefDialog.sending.Folder.SMIME.label "S/MIME-beveiligingsinstellingen">
-<!ENTITY vI_prefDialog.sending.Folder.VCard.label "vCard-bijlagen">
-
-<!ENTITY vI_prefDialog.sending.fccTab.header "Map Verzonden">
-<!ENTITY vI_prefDialog.sending.fccTab.caption "Bij het verzenden van een bericht met een virtuele identiteit">
 <!ENTITY vI_prefDialog.sending.vidAccount.label "Door account gebruikte map wijzigen bij gebruik virtuele identiteit">
 <!ENTITY vI_prefDialog.sending.vidDefault.label "Door standaardaccount gebruikte map">
 
@@ -126,6 +104,7 @@
 <!ENTITY vI_prefDialog.sending.tmplTab.header "Map Sjablonen">
 <!ENTITY vI_prefDialog.sending.tmplTab.caption "Opslaglokatie voor sjablonen">
 
+<!ENTITY vI_prefDialog.sending.warnings.label "Waarschuwingen">
 <!ENTITY vI_prefDialog.sending.warnings.header "Waarschuwingen">
 <!ENTITY vI_prefDialog.sending.warnings.caption "Voor verzenden van bericht">
 <!ENTITY vI_prefDialog.sending.warnings.warnNonvirtual.label "Waarschuwen bij gebruik van niet-virtuele identiteiten">
@@ -141,7 +120,7 @@
 <!ENTITY vI_prefDialog.storageTab.Tab0.header "Identiteitsopslag">
 <!ENTITY vI_prefDialog.storageTab.Tab0.caption "Opslaggebruik">
 <!ENTITY vI_prefDialog.storageTab.Tab0.caption2 "Storage Editor"> <!-- translate -->
-<!ENTITY vI_prefDialog.storageTab.DateFormat.label "Format of Dates: Leave empty or use strftime() syntax (&apos;&#37;c&apos;)"> <!-- translate -->
+<!ENTITY vI_prefDialog.storageTab.DateFormat.label "Format of Dates: Leave empty or use strftime() syntax (&apos;&#37;F&apos;)"> <!-- translate -->
 <!ENTITY vI_prefDialog.storage.label "Gebruikte identiteiten opslaan (en herinneren)">
 <!ENTITY vI_prefDialog.storage.tooltiptext "Gebruikte identiteiten kunnen in relatie tot de ontvangers van uw bericht worden opgeslagen. Als u opnieuw een bericht aan dezelfde ontvanger stuurt wordt dezelfde virtuele of niet-virtuele identiteit gebruikt">
 <!ENTITY vI_prefDialog.storage.openEditor "Opgeslagen gegevens bewerken">
@@ -188,8 +167,3 @@
 <!ENTITY vI_prefDialog.notifyDebug.label "Veld met foutopsporingsinformatie weergeven">
 <!ENTITY vI_prefDialog.debugToFile.label "debug to file"> <!-- translate -->
 <!ENTITY vI_prefDialog.debugToFile.choose "choose"> <!-- translate -->
-
-<!-- just for TB 1.5. ReplyFollowsParent not available -->
-<!-- fields will be hidden, dont have to be translated -->
-<!ENTITY fccReplyFollowsParent.label "">
-<!ENTITY fccReplyFollowsParent.accesskey "">

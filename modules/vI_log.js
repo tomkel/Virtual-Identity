@@ -227,7 +227,7 @@ function setupFullLogging(name) {
     capp.level = Log4Moz.Level["Warn"];
     root.addAppender(capp);
 
-    dump("*** making ConsoleAppender robust against empty messages\n");
+//     dump("*** making ConsoleAppender robust against empty messages\n");
     // original implementation of doAppend dies if message data is empty
     capp.doAppend = function CApp_doAppend(message) {
       try {
@@ -289,9 +289,7 @@ function errorReportEmail(e) {
 
   let version = ""
   try {
-    version = "virtual identity v " + Cc["@mozilla.org/appshell/window-mediator;1"]
-      .getService(Ci.nsIWindowMediator)
-      .getMostRecentWindow("mail:3pane").virtualIdentityExtension.extensionVersion + ":\n\n";
+    version = vI.extensionVersion + ":\n\n";
   } catch (e) {}
 
   params.composeFields = composeFields;
@@ -460,7 +458,7 @@ function UpdateGetHeaderNotification() {
 }
 
 let logRoot = "virtualIdentity";
-let MyLog = setupFullLogging(logRoot);
+var MyLog = setupFullLogging(logRoot);
 
 let myNotificationFormatter = new NotificationFormatter();
 
